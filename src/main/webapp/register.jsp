@@ -7,6 +7,7 @@
 --%>
 
 <%@ include file="index.jsp"%>
+<% if (session.getAttribute("uname")!=null){ response.sendRedirect("Home.jsp"); }%>
 <body>
 <div class="container">
     <div class="row">
@@ -17,7 +18,7 @@
                     <hr class="my-4">
                     <form method="post" action="Register1">
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="floatingInput" name="name" placeholder="Omar">
+                            <input type="text" class="form-control" id="floatingInput" name="uname" placeholder="Omar">
                             <label for="floatingInput">username</label>
                         </div>
                         <div class="form-floating mb-3">
@@ -29,7 +30,7 @@
                             <label for="floatingPassword">Password</label>
                         </div>
                         <div class="form-floating mb-3">
-                            <input type="password" class="form-control" id="floatingPassword" pl    aceholder="Password">
+                            <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
                             <label for="floatingPassword">Confirm Password</label>
                         </div>
 

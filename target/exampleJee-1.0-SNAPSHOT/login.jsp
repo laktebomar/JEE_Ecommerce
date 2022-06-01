@@ -8,8 +8,7 @@
 <%@ include file="index.jsp" %>
 <% if (session.getAttribute("name")!=null){ response.sendRedirect("Home.jsp"); }%>
 <body>
-    <input class="alert alert-success" role="alert" type="hidden" id="status"  value="<%=request.getAttribute("status")%>">
-<div class="container">
+    <div class="container">
     <div class="row">
         <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
             <div class="card border-0 shadow rounded-3 my-5">

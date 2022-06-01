@@ -16,7 +16,7 @@ public class Register1 extends HttpServlet {
 
     @Override
     public void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException{
-        String name = req.getParameter("name");
+        String name = req.getParameter("uname");
         String mail = req.getParameter("mail");
         String pass = req.getParameter("pass");
 

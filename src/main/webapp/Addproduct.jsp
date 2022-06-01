@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ include file="index.jsp"%>
+<% if (session.getAttribute("uname")==null){ response.sendRedirect("login.jsp"); }%>
 <body>
 <div class="container">
     <div class="row">

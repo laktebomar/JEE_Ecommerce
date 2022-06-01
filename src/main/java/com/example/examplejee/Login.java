@@ -32,7 +32,7 @@ public class Login extends HttpServlet {
 
 
             if (rs.next()){
-                session.setAttribute("name", rs.getString("username"));
+                session.setAttribute("uname", rs.getString("username"));
                 session.setAttribute("mail", rs.getString("email"));
                 disp = request.getRequestDispatcher("Home.jsp");
                 disp.forward(request, res);

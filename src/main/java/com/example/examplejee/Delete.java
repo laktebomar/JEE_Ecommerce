@@ -7,38 +7,30 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
-import javax.servlet.http.*;
 
+@WebServlet(name = "Delete", value = "/Delete")
+public class Delete extends HttpServlet {
 
-@WebServlet(name = "AddProduct", value = "/AddProduct")
-public class AddProduct extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        HttpSession session = request.getSession();
-        String name = request.getParameter("name");
-        String desc = request.getParameter("desc");
-        String price = request.getParameter("price");
-        String quantity = request.getParameter("quantity");
-        String uname = (String) session.getAttribute("uname");
-        session.setAttribute("pname", name);
+        String id = request.getParameter("id");
+
         RequestDispatcher disp = null;
         Connection conn = null;
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/PROJET_JEE", "root", "");
 
-            PreparedStatement ps = conn.prepareStatement("insert into Products (name, description, price, quantity, uname) values (?,?,?,?, ?);");
+            PreparedStatement ps = conn.prepareStatement("DELETE FROM Products WHERE id = ?");
 
-            ps.setString(1, name);
-            ps.setString(2, desc);
-            ps.setString(3, price);
-            ps.setString(4, quantity);
-            ps.setString(5, uname);
+            ps.setString(1, id);
 
-
-            disp = request.getRequestDispatcher("Home.jsp");
             int count = ps.executeUpdate();
+            System.out.println(id);
+            disp = request.getRequestDispatcher("Profile.jsp");
             if (count> 1){
+
+                System.out.println("sssss");
                 request.setAttribute("status", "succ");
             }else{
                 request.setAttribute("status", "fail");
@@ -52,7 +44,6 @@ public class AddProduct extends HttpServlet {
         catch (Exception e){
             e.printStackTrace();
         }
+
     }
 }
-
-
